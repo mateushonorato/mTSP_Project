@@ -3,6 +3,7 @@
 
 #include "args.h"
 #include <cmath>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -18,12 +19,14 @@ typedef struct sPoint
 
 typedef struct sInstance
 {
+    string name;
     int size;
     float **distance;
     Point *coords;
 } Instance;
 
 void calculateDistance(Instance &inst);
-Instance readInstance(string fileName);
+Instance readInstance(filesystem::path filePath);
+vector<Instance> readInstances();
 
 #endif // INSTANCE_H

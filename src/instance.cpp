@@ -11,10 +11,11 @@ void calculateDistance(Instance &inst)
     }
 }
 
-Instance readInstance(string fileName)
+Instance readInstance(filesystem::path filePath)
 {
     Instance inst;
-    ifstream arq(fileName);
+    inst.name = filePath.stem().string();
+    ifstream arq(filePath);
     if (arq.is_open())
     {
         // número de cidades
@@ -42,7 +43,7 @@ Instance readInstance(string fileName)
         if (verbose)
         {
             cout << endl
-                 << "Instance " << fileName << " loaded successfully!" << endl
+                 << "Instance " << inst.name << " loaded successfully!" << endl
                  << endl;
         }
 
@@ -51,8 +52,29 @@ Instance readInstance(string fileName)
     else
     {
         cerr << endl
-             << "Error opening file " << fileName << endl
+             << "Error opening file " << filePath.string() << endl
              << endl;
         exit(EXIT_FAILURE);
     }
+}
+
+vector<Instance> readInstances()
+{
+    vector<Instance> instances;
+    if (!allInstances)
+    {
+        Instance inst = readInstance(instanceFileName);
+        instances.push_back(inst);
+    }
+    else
+    {
+        for (const auto &entry : filesystem::directory_iterator("instances"))
+        {
+            if (entry.is_regular_file())
+            {
+                instances.push_back(readInstance(entry.path()));
+            }
+        }
+    }
+    return instances;
 }
