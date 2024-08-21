@@ -1,6 +1,7 @@
 #ifndef INSTANCE_H
 #define INSTANCE_H
 
+#include "args.h"
 #include <cmath>
 #include <fstream>
 #include <iostream>

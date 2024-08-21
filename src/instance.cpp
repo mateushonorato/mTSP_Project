@@ -38,14 +38,18 @@ void readInstance(Instance &inst, string fileName)
         // calculando a matriz
         calculateDistance(inst);
 
-        // cout << endl
-        //      << "Instância " << fileName << " carregada com sucesso." << endl
-        //      << endl;
+        if (verbose)
+        {
+            cout << endl
+                 << "Instance " << fileName << " loaded successfully!" << endl
+                 << endl;
+        }
     }
     else
     {
         cerr << endl
              << "Error opening file " << fileName << endl
              << endl;
+        exit(EXIT_FAILURE);
     }
 }
