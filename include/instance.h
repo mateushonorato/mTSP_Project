@@ -24,6 +24,6 @@ typedef struct sInstance
 } Instance;
 
 void calculateDistance(Instance &inst);
-void readInstance(Instance &inst, string fileName);
+Instance readInstance(string fileName);
 
 #endif // INSTANCE_H
