@@ -21,12 +21,12 @@ Solution solveNearestNeighbor(const Instance &inst)
 {
     Solution sol;
     vector<bool> visited(inst.size, false);
-    sol.resize(numSalesmen);
+    sol.routes.resize(numSalesmen);
 
     for (int salesman = 0; salesman < numSalesmen; ++salesman)
     {
         int currentCity = salesman % inst.size; // Start each salesman at a different city
-        sol[salesman].push_back(currentCity);
+        sol.routes[salesman].cities.push_back(currentCity);
         visited[currentCity] = true;
 
         for (int step = 1; step < inst.size / numSalesmen; ++step)
@@ -35,7 +35,7 @@ Solution solveNearestNeighbor(const Instance &inst)
             if (nextCity == -1)
                 break;
 
-            sol[salesman].push_back(nextCity);
+            sol.routes[salesman].cities.push_back(nextCity);
             visited[nextCity] = true;
             currentCity = nextCity;
         }
