@@ -37,3 +37,6 @@ bin
 
 # vscode config
 .vscode
+
+# results txt
+results/*/*.txt
