@@ -34,3 +34,6 @@
 # folders used by Makefile
 .temp
 bin
+
+# vscode config
+.vscode
