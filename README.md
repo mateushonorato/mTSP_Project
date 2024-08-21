@@ -51,8 +51,9 @@ The program reads problem instances from the `instances/` directory and outputs 
 
 To run the greedy heuristic on a specific instance:
 ```bash
-./bin/mtsp instances/instance1.txt greedy
+./bin/mtsp <instance_file> <heuristic> [-v]
 ```
+The `-v` argument stands for verbose and will define if outputs are shown during execution
 
 ## Results
 
