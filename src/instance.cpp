@@ -11,8 +11,9 @@ void calculateDistance(Instance &inst)
     }
 }
 
-void readInstance(Instance &inst, string fileName)
+Instance readInstance(string fileName)
 {
+    Instance inst;
     ifstream arq(fileName);
     if (arq.is_open())
     {
@@ -44,6 +45,8 @@ void readInstance(Instance &inst, string fileName)
                  << "Instance " << fileName << " loaded successfully!" << endl
                  << endl;
         }
+
+        return inst;
     }
     else
     {
