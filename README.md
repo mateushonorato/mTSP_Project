@@ -61,4 +61,5 @@ The results of running the different heuristics on various instances are stored 
 ## Acknowledgments
 
 - Special thanks to the authors of the paper [**"Estudo Comparativo de Metaheurísticas Aplicadas ao Problema do Caixeiro Viajante Múltiplo"**](https://www.researchgate.net/publication/364811163_ESTUDO_COMPARATIVO_DE_METAHEURISTICAS_APLICADAS_AO_PROBLEMA_DO_CAIXEIRO_VIAJANTE_MULTIPLO) for providing a solid foundation for this project.
+- Thanks to the developers of TSPLIB 95 for the provided instances
 - Thanks to Federal University of Ouro Preto (UFOP) for the resources and support provided.
