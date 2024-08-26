@@ -12,16 +12,8 @@ int main(int argc, char *argv[])
     vector<Instance> instances = readInstances();
     for (Instance inst : instances)
     {
-        if (verbose)
+        if (checkNumSalesmen(inst))
         {
-            cout << "Instance: " << inst.name << endl;
-        }
-        if (inst.size / 2 < numSalesmen)
-        {
-            if (verbose)
-            {
-                cout << "The number of salesmen must be less than half the number of cities." << endl;
-            }
             continue;
         }
         if (selectedHeuristic == "nearest_neighbor" || allHeuristics)

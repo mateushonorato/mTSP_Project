@@ -56,6 +56,22 @@ Instance readInstance(filesystem::path filePath)
     }
 }
 
+bool checkNumSalesmen(Instance &inst)
+{
+    if (inst.size / 2 < numSalesmen)
+    {
+        if (verbose)
+        {
+            cout << "Instance " << inst.name << " will not be solved. The number of salesmen must be less than half the number of cities!" << endl
+                 << "Number of cities = " << inst.size << endl
+                 << "Number of salesmen = " << numSalesmen << endl
+                 << "--------------------------------------------" << endl;
+        }
+        return true;
+    }
+    return false;
+}
+
 vector<Instance> readInstances()
 {
     if (verbose)

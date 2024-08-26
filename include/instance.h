@@ -26,6 +26,7 @@ typedef struct sInstance
 } Instance;
 
 void calculateDistance(Instance &inst);
+bool checkNumSalesmen(Instance &inst);
 Instance readInstance(filesystem::path filePath);
 vector<Instance> readInstances();
 
