@@ -24,23 +24,27 @@ To build and run this project, you will need:
 ### Build Instructions
 
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/mateushonorato/mTSP_Project.git
    cd mTSP_Project
    ```
 
 2. **Build the Project**:
+
    ```bash
    make
    ```
+
    If you run into any problems, try running:
+
    ```bash
    make clean
    ```
 
 3. **Run the Executable**:
    ```bash
-   ./bin/mtsp
+   ./bin/mtsp -i <instance_file> -h <heuristic> -n <num_salesmen>
    ```
 
 ### Usage
@@ -49,11 +53,24 @@ The program reads problem instances from the `instances/` directory and outputs 
 
 ### Example
 
-To run the greedy heuristic on a specific instance:
+To run this program, you must specify the instance name, the heuristic and the number of salesmen:
+
 ```bash
-./bin/mtsp <instance_file> <heuristic> [-v]
+./bin/mtsp -i <instance_file> -h <heuristic> -n <num_salesmen>
 ```
-The `-v` argument stands for verbose and will define if outputs are shown during execution
+
+You can also use optional arguments to run all instances, all heuristics, or turn on verbose output:
+
+```bash
+Usage: ./bin/mtsp -i <instance_file> -h <heuristic> -n <num_salesmen>
+Options:
+  --instance, -i: Instance file
+  --heuristic, -h: Heuristic to be used
+  --num-salesmen, -n: Number of salesmen
+  --all-heuristics, -ah: Run all heuristics
+  --all-instances, -ai: Run all instances
+  --verbose, -v: Print detailed output
+```
 
 ## Results
 
