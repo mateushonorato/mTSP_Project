@@ -2,6 +2,8 @@
 
 void printSolution(const Solution &sol)
 {
+    cout << "Instance: " << sol.instanceName << endl
+         << "Heuristic: " << sol.heuristicName << endl;
     for (const auto &route : sol.routes)
     {
         cout << "[ ";
@@ -11,7 +13,8 @@ void printSolution(const Solution &sol)
         }
         cout << "] -> Cost = " << route.cost << endl;
     }
-    cout << "Total cost = " << sol.totalCost << endl;
+    cout << "Total cost = " << sol.totalCost << endl
+         << "--------------------------------------------" << endl;
 }
 
 void calculateCosts(Solution &sol, const Instance &inst)
@@ -31,7 +34,7 @@ void calculateCosts(Solution &sol, const Instance &inst)
 
 void saveSolution(const Solution &sol)
 {
-    string fileName = "results/" + selectedHeuristic + "/" + instanceFileName.replace(instanceFileName.find("instances/"), 10, "").replace(instanceFileName.find(".txt"), 4, "") + "_" + to_string(numSalesmen) + ".txt";
+    string fileName = "results/" + sol.heuristicName + "/" + sol.instanceName + "_" + to_string(numSalesmen) + ".txt";
     ofstream arq(fileName);
     if (arq)
     {

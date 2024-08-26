@@ -10,12 +10,14 @@ using namespace std;
 typedef struct sRoute
 {
     vector<int> cities;
-    float cost;
+    float cost = 0;
 } Route;
 
 typedef struct sSolution
 {
-    float totalCost;
+    string heuristicName;
+    string instanceName;
+    float totalCost = 0;
     vector<Route> routes;
 } Solution;
 
