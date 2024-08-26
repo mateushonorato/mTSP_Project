@@ -42,9 +42,7 @@ Instance readInstance(filesystem::path filePath)
 
         if (verbose)
         {
-            cout << endl
-                 << "Instance " << inst.name << " loaded successfully!" << endl
-                 << endl;
+            cout << "Instance " << inst.name << " loaded successfully!" << endl;
         }
 
         return inst;
@@ -60,6 +58,10 @@ Instance readInstance(filesystem::path filePath)
 
 vector<Instance> readInstances()
 {
+    if (verbose)
+    {
+        cout << "Loading instances..." << endl;
+    }
     vector<Instance> instances;
     if (!allInstances)
     {
@@ -75,6 +77,11 @@ vector<Instance> readInstances()
                 instances.push_back(readInstance(entry.path()));
             }
         }
+    }
+    if (verbose)
+    {
+        cout << "All instances loaded successfully!" << endl
+             << "--------------------------------------------" << endl;
     }
     return instances;
 }
