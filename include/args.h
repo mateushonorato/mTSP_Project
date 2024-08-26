@@ -25,7 +25,7 @@ extern string instanceFileName;
 extern string selectedHeuristic;
 
 Arguments resolveArgument(string arg);
-void helpMessage(string programName);
+void helpMessage(string programName, string errorMessage);
 void parseArguments(int argc, char *argv[]);
 
 #endif // ARGS_H

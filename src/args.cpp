@@ -39,16 +39,20 @@ Arguments resolveArgument(string arg)
     }
 }
 
-void helpMessage(string programName)
+void helpMessage(string programName, string errorMessage)
 {
-    cout << "Usage: " + programName + " -i <instance_file> -h <heuristic> -n <num_salesmen>" << endl;
-    cout << "Options:" << endl;
-    cout << "  --instance, -i: Instance file" << endl;
-    cout << "  --heuristic, -h: Heuristic to be used" << endl;
-    cout << "  --num-salesmen, -n: Number of salesmen" << endl;
-    cout << "  --all-heuristics, -ah: Run all heuristics" << endl;
-    cout << "  --all-instances, -ai: Run all instances" << endl;
-    cout << "  --verbose, -v: Print detailed output" << endl;
+    if (!errorMessage.empty())
+    {
+        cerr << "Error: " << errorMessage << endl;
+    }
+    cout << "Usage: " + programName + " -i <instance_file> -h <heuristic> -n <num_salesmen>" << endl
+         << "Options:" << endl
+         << "  --instance, -i: Instance file" << endl
+         << "  --heuristic, -h: Heuristic to be used" << endl
+         << "  --num-salesmen, -n: Number of salesmen" << endl
+         << "  --all-heuristics, -ah: Run all heuristics" << endl
+         << "  --all-instances, -ai: Run all instances" << endl
+         << "  --verbose, -v: Print detailed output" << endl;
     exit(EXIT_FAILURE);
 }
 
@@ -56,7 +60,7 @@ void parseArguments(int argc, char *argv[])
 {
     if (argc < 3)
     {
-        helpMessage(argv[0]);
+        helpMessage(argv[0], "");
     }
 
     for (int i = 1; i < argc; i++)
@@ -71,9 +75,13 @@ void parseArguments(int argc, char *argv[])
             selectedHeuristic = argv[++i];
             break;
         case NUM_SALESMEN:
-            if(i + 1 >= argc) {
-                cerr << "Error: Number of salesmen must be specified." << endl;
-                helpMessage(argv[0]);
+            if (i + 1 >= argc)
+            {
+                helpMessage(argv[0], "Number of salesmen must be specified.");
+            }
+            if (!isdigit(*argv[i + 1]))
+            {
+                helpMessage(argv[0], "Number of salesmen must be an integer.");
             }
             numSalesmen = atoi(argv[++i]);
             break;
@@ -87,29 +95,26 @@ void parseArguments(int argc, char *argv[])
             verbose = true;
             break;
         case HELP_MESSAGE:
-            helpMessage(argv[0]);
+            helpMessage(argv[0], "");
             break;
         default:
-            helpMessage(argv[0]);
+            helpMessage(argv[0], "Invalid argument.");
             break;
         }
     }
 
     if (!allHeuristics && selectedHeuristic.empty())
     {
-        cerr << "Error: Heuristic must be specified unless --all-heuristics is used." << endl;
-        helpMessage(argv[0]);
+        helpMessage(argv[0], "Heuristic must be specified unless --all-heuristics is used.");
     }
 
     if (!allInstances && instanceFileName.empty())
     {
-        cerr << "Error: Instance file must be specified unless --all-instances is used." << endl;
-        helpMessage(argv[0]);
+        helpMessage(argv[0], "Instance file must be specified unless --all-instances is used.");
     }
 
     if (numSalesmen == 0)
     {
-        cerr << "Error: Number of salesmen must be specified." << endl;
-        helpMessage(argv[0]);
+        helpMessage(argv[0], "Number of salesmen must be specified.");
     }
 }
