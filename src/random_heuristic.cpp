@@ -2,7 +2,6 @@
 
 Solution solveRandomHeuristic(const Instance &inst)
 {
-
     random_device rd;
     mt19937 mt(rd());
     Solution sol;
@@ -16,7 +15,7 @@ Solution solveRandomHeuristic(const Instance &inst)
     int visitedCities = 1;
     while (visitedCities < inst.size)
     {
-        for (int i = 0; i < numSalesmen; i++)
+        for (int i = 0; i < numSalesmen && visitedCities < inst.size; i++)
         {
             int nextCity = mt() % inst.size;
             while (visited[nextCity])
