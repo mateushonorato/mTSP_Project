@@ -20,6 +20,8 @@ int findNearestNeighbor(const Instance &inst, const vector<bool> &visited, int c
 Solution solveNearestNeighbor(const Instance &inst)
 {
     Solution sol;
+    sol.heuristicName = "nearest_neighbor";
+    sol.instanceName = inst.name;
     vector<bool> visited(inst.size, false);
     sol.routes.resize(numSalesmen);
 
