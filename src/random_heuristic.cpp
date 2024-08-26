@@ -6,6 +6,8 @@ Solution solveRandomHeuristic(const Instance &inst)
     random_device rd;
     mt19937 mt(rd());
     Solution sol;
+    sol.heuristicName = "random_heuristic";
+    sol.instanceName = inst.name;
     vector<bool> visited(inst.size, false);
     sol.routes.resize(numSalesmen);
     int currentCity = mt() % inst.size;
